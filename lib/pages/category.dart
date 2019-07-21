@@ -22,7 +22,12 @@ class CategoryState extends State<CategoryPage> {
       body: Container(
         child: Row(
           children: <Widget>[
-            CategoryLeftView()
+            CategoryLeftView(),
+            Column(
+              children: <Widget>[
+                CategoryTitleView(),
+              ],
+            )
           ],
         ),
       ),
@@ -92,7 +97,7 @@ class CategoryLeftState extends State<CategoryLeftView> {
           )
         ),
       ),
-      child: ListView.builder(
+      child: dataArr.length == 0 ? Container() : ListView.builder(
           itemCount: dataArr.length,
           itemBuilder: (context, index){
               return getItem(dataArr[index]);
@@ -131,10 +136,15 @@ class CategoryTitleState extends State<CategoryTitleView> {
     // TODO: implement build
     return Container(
       height: ScreenUtil().setHeight(60),
-      child: ListView.builder(
-        itemCount: dataArrr.length,
-        itemBuilder: (context, index){
-          return getItem(dataArrr[index]);
+      child: Provide<GateroryProvide>(
+        builder: (context, child, objc){
+          dataArrr = objc.leftModel.bxMallSubDto;
+          return ListView.builder(
+            itemCount: dataArrr.length,
+            itemBuilder: (context, index){
+              return getItem(dataArrr[index]);
+            },
+          );
         },
       ),
     );
