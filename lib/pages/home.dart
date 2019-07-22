@@ -7,9 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 //json数据解析的库
 import 'dart:convert';
 
-
 class HomePage extends StatefulWidget {
-
   HomeStatePage createState() => HomeStatePage();
 }
 
@@ -44,7 +42,6 @@ class HomeStatePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
               TopNavigator navi = TopNavigator(navigatorList: naviList,);
               AdBanner banner = AdBanner(addPicture: 'khkhkhkhk');
               LeaderPhone phone = LeaderPhone(leaderImage: '1223', leaderPhone: '15552751836',);
-
               Recommend recommend = Recommend(list: naviList,title: '商品推荐');
               return SingleChildScrollView(
                 child: Column(children: <Widget>[
@@ -53,7 +50,6 @@ class HomeStatePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   navi,
                   phone,
                   recommend
-
                 ],),
               );
 
@@ -62,7 +58,7 @@ class HomeStatePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
               return Center(child: Text('加载失败'),);
             }
           },
-          future: getHomePageContent(),
+          future: request('wxmini/homePageContent', Method.post, {'lon':'115.02932', 'lat':'35.76189'}),
         ),
       ),
     );

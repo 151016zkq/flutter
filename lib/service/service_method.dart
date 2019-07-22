@@ -9,7 +9,7 @@ enum Method {
 }
 
 //接口
-Future request(String url,Method method, {paramete}) async {
+Future request(String url,Method method, paramete) async {
   print('开始获取数据');
   try {
     Response response;
@@ -19,11 +19,11 @@ Future request(String url,Method method, {paramete}) async {
 
       case Method.post:
         // TODO: Handle this case.
-        response = await dio.post(url, data: paramete);
+        response = await dio.post(serviceUrl + url, data: paramete);
         break;
       case Method.get:
         // TODO: Handle this case.
-        response = await dio.get(url, queryParameters: paramete);
+        response = await dio.get(serviceUrl + url, queryParameters: paramete);
         break;
     }
     if (response.statusCode == 200) {

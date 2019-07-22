@@ -4,11 +4,13 @@ import 'package:provide/provide.dart';
 import './provide/provide.dart';
 void main(){
   var num = Num();
+  var category = GateroryProvide();
   var providers = Providers();
   //注册依赖，相当于注册通知
-  providers..provide(Provider<Num>.value(num));
+  providers
+    ..provide(Provider<Num>.value(num))
   //注册类别页面的通知
-  providers..provide(Provider<GateroryProvide>.value(GateroryProvide()));
+  ..provide(Provider<GateroryProvide>.value(category));
   runApp(ProviderNode(child: MyApp(), providers: providers));
   
 }

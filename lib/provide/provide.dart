@@ -13,11 +13,12 @@ class Num with ChangeNotifier {
 
 class GateroryProvide with ChangeNotifier {
   //选择哪个类别
-  LeftGategoryModel leftModel;
+  LeftGategoryModel leftModel = LeftGategoryModel();
 
   //点击了那个类别
-  void selectedModel(){
-
+  void selectedModel(LeftGategoryModel model){
+    leftModel = model;
+    notifyListeners();
   }
 
 
